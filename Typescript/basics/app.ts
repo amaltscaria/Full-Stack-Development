@@ -1,38 +1,31 @@
-// Enum
-// gives enumerated lists => human readable labels
+//Literal
 
-const employee3 = {
-    name: 'Amal', 
-    age: 24,
-    hobbies: ['Cooking', 'Football'],
-    role: 1,
-}
-// if we add role like this , we assing something like 4 which has no value
-// if we add role like this for eg: 1 => admin, 2 => read-only, 3 => author
-// it might be difficult to remember which was assigned to which
+// represents specific values that a variable or property can hold.
 
-// so may be a better was is to use like
+const combine3 = (
+  input1: number | string,
+  input2: number | string,
+  //   resultConversion: string // we might forget the values so we use literal
+  resultConversion: "as-number" | "as-text"
+) => {
+  let result;
+  if (
+    (typeof input1 === "number" && typeof input2 === "number") ||
+    resultConversion === "as-number"
+  ) {
+    result = +input1 + +input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+  // if(resultConversion === 'as-number')
+  // return +result;
+  // else return result.toString();
+};
 
-const employee4 = {
-    name: 'Amal', 
-    age: 24,
-    hobbies: ['Cooking', 'Football'],
-    role: 'ADMIN',
-}
-// 'ADMIN', 'READ-ONLY', 'AUTHOR'
-//here also there are some issues as we have to exactly remember the spelling and etch...
-
-
-// so enum comes to play
-
-enum Role{admin, readOnly, author};
-console.log(Role);
-
-const employee5 = {
-    name: 'Amal',
-    age: 24,
-    hobbies: ['Gaming', 'Fishing'],
-    role: Role.readOnly,
-}
-
-console.log(employee5.role);
+const combineAges = combine3(20, 30, "as-number");
+console.log(combineAges);
+const combineStringAges = combine3("20", "30", "as-number");
+console.log(combineStringAges);
+const combineNames = combine3("Amal T ", "Scaria", "as-text");
+console.log(combineNames);
