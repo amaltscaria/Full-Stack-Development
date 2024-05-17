@@ -12,4 +12,4 @@ let value2;
 value2 = 7;
 
 let newVal2 : string;
-newVal2 = value2;
+// newVal2 = value2;
